@@ -1,6 +1,6 @@
 Note De Clarification
 
-Liste des objets présents dans la base et leur propriétés:
+Liste des objets présents dans la base et leur propriétés :
     Dans la base de données, il y aura des ressources qui pourront être des livres, des films ou bien des enregistrements musicaux : 
         -> Une ressource aura un code, un titre, une date d'apparition, un genre et un code de clarification
         -> Les livres auront des codes isbn uniques, un résumé et seront écrit dans une certaine langue
