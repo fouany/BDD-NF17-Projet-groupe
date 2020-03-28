@@ -1,0 +1,98 @@
+@startuml
+hide circle
+
+
+
+Class Livre{
+  code_isbn : nb
+  langue : text
+  résumé : text
+}
+
+Class Film{
+  langue : text
+  longueur : nb
+  synopsis : text
+}
+
+Class Enregistrement_Musical{
+  longueur : nb
+}
+
+Class Contributeur{
+  nom : text
+  prenom : text
+  date_naissance : nb
+  nationalité : text
+}
+
+Class Ressource{
+  code : nb
+  titre : text
+  date_apparition : nb
+  editeur : text
+  genre : text
+  code_classification : nb
+}
+
+Class Exemplaire{
+  etat : {neuf,bon,abîmé,perdu}
+}
+
+Class Utilisateur{
+nom : text
+prenom : text
+adresse : text
+mail : text
+
+}
+
+Class Membre_Personnel{
+login_adm : text
+mdp_adm : text
+}
+
+Class Adherent{
+numero_carte : nb
+telephone : nb
+date_naissance : nb
+login_prêt : text
+mdp_prêt : text
+blacklist : boolean
+}
+
+Class Prêt{
+date : nb
+durée : nb
+}
+
+Class Sanction{
+
+  type : {Retard|Deterioration}
+  id : nb
+  desc : text
+}
+
+Adherent "1" -- "*" Sanction : a subi
+Adherent "1" -- "5" Exemplaire
+(Adherent,Exemplaire) .. Prêt : Authentification
+'Bon état
+
+
+Utilisateur <|-- Membre_Personnel
+Utilisateur <|-- Adherent
+
+Ressource <|-- Livre
+Ressource <|-- Enregistrement_Musical
+Ressource <|-- Film
+
+Ressource "1" -- "*" Exemplaire : Existe
+Livre "*" -- "*" Contributeur : Auteur
+Livre "*" -- "1" Contributeur : Editeur
+Film "*" -- "1" Contributeur : Réalisateur
+Film "*" -- "*" Contributeur : Acteur
+Enregistrement_Musical "*" -- "*" Contributeur : Compositeur
+Enregistrement_Musical "*" -- "*" Contributeur : Interprète
+
+
+@enduml
