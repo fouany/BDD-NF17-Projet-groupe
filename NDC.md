@@ -60,3 +60,4 @@ Il y a au plus un auteur par livre et au plus un interprète par enregistrements
 Les login et mdp des adhérents et des membres du personnel sont différents et permettent d'accéder à deux interfaces différentes.<br>
 Un adhérent ne pourra souscrire qu'à une nouvelle adhésion que si la sienne en'est plus valide.<br>
 Un adhérent pourra faire plus de 5 emprunts dans sa vie à condition qu'il rende les exemplaires empruntés et qu'il en ait 5 au maximum au même moment.<br>
+Un adhérent pourra faire un emprunt uniquement si son adhésion est à jour, s'il est authentifié et s'il n'est pas blacklisté.<br>
