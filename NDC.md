@@ -1,16 +1,16 @@
 # Note De Clarification
 
 ## Liste des objets présents dans la base et leur propriétés 
-Dans la base de données, il y aura des ressources qui pourront être des livres, des films ou bien des enregistrements musicaux :
+Dans la base de données, il y a des ressources qui peuvent être des livres, des films ou bien des enregistrements musicaux :
 * Une ressource a un code, un titre, une date d'apparition, un genre et un code de classification
 * Les livres ont un code isbn unique et un résumé 
 * Les films ont une longueur et un synopsis
 * Les enregistrements musicaux ont une certaine longueur
 
 On trouvera aussi les différentes langues des ressources :
-*  Ces  langues auront un nom 
+*  Ces  langues ont un nom 
 
-Il y aura les contributeurs liés aux différentes ressources citées auparavant 
+Les contributeurs sont liés aux différentes ressources citées auparavant 
 * les contributeurs ont un nom, un prénom, une date de naissance et une nationalité 
 
 La base de données est utilisée par des utilisateurs qui peuvent être des adhérents ou des membres du personnel de la bibliothèque :
@@ -18,19 +18,19 @@ La base de données est utilisée par des utilisateurs qui peuvent être des adh
 * Les adhérents ont un numéro de carte d'adhérent, un numéro de téléphone, une date de naissance, un login, un mot de passe et peuvent être blacklistés
 * Les membres du personnel ont un login et un mot de passe
 
-Les adhésions actuelles et passées des adhérents seront recensées : 
+Les adhésions actuelles et passées des adhérents sont recensées : 
 * Elles auront une date de début et une date de fin 
 
 Dans la base de données, on trouvera aussi les différents exemplaires de chaque ressource appartenant à la bibliothèque :
 * Un exemplaire a un état {neuf, bon, abîmé}, une disponibilité {disponible, prêté, perdu} et un identifiant
 
-Les sanctions des adhérents seront recensés, elles peuvent être liées à des retards, des déteriorations et/ou des pertes :
+Les sanctions des adhérents sont recensées, elles peuvent être liées à des retards, des déteriorations et/ou des pertes :
 * Les sanctions ont un identifiant et une description
-* Les retards seront caractérisés par un nombre de jours
+* Les retards sont caractérisés par un nombre de jours de dépassement
 * Les pertes et les déteriorations ont un booléen spécifiant si l'exemplaire a été remboursé ou non
 
-Dans la base de données, on trouvera les différents prêts faits par les adhérents :
-* Les prêts ont une date, une durée et peuvent être terminé/rendus. On pourra déterminer si l'emprunteur à dépasser le délai pour rendre l'exemplaire
+Dans la base de données, on trouve les différents prêts faits par les adhérents :
+* Les prêts ont une date, une durée et peuvent être terminés/rendus. On peut déterminer si l'emprunteur a dépassé le délai pour rendre l'exemplaire
 
 ## Liste des contraintes associées à ces objets et propriétés
 Les ressources peuvent exister en plusieurs exemplaires mais un exemplaire ne peut être lié qu'à une seule ressource. <br>
