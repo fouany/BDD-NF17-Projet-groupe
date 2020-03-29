@@ -19,7 +19,7 @@ La base de données est utilisée par des utilisateurs qui peuvent être des adh
 * Les membres du personnel ont un login et un mot de passe
 
 Les adhésions actuelles et passées des adhérents sont recensées : 
-* Elles auront une date de début et une date de fin 
+* Elles ont une date de début et une date de fin 
 
 Dans la base de données, on trouvera aussi les différents exemplaires de chaque ressource appartenant à la bibliothèque :
 * Un exemplaire a un état {neuf, bon, abîmé}, une disponibilité {disponible, prêté, perdu} et un identifiant
