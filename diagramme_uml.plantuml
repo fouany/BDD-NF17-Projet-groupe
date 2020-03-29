@@ -37,6 +37,8 @@ Class Ressource{
 
 Class Exemplaire{
   etat : {neuf,bon,abîmé,perdu}
+  id : nb
+  etat : {prêté|disponible|perdu}
 }
 
 Class Utilisateur{
