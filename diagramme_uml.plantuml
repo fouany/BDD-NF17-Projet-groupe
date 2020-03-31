@@ -118,7 +118,7 @@ Film "*" -- "*" Contributeur : Acteur
 
 Langue "1" - "*" Livre : est écrit en
 
-Ressource *-- "*" Exemplaire : est composée
+Ressource -- "*" Exemplaire : est constiuée
 
 Livre "*" -- "1" Contributeur : Auteur
 Livre "*" -- "1" Contributeur : Editeur
