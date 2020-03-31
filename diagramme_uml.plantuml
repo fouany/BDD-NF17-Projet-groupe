@@ -1,7 +1,5 @@
-@startuml
+#@startuml
 hide circle
-
-
 
 Class Livre{
   code_isbn : nb
@@ -45,70 +43,58 @@ Class Exemplaire{
 }
 
 Class Utilisateur{
-nom : text
-prenom : text
-adresse : text
-mail : text
-
+  nom : text
+  prenom : text
+  adresse : text
+  mail : text
 }
 
 Class Membre_Personnel{
-login_adm : text
-mdp_adm : text
+  login_adm : text
+  mdp_adm : text
 }
 
 Class Adherent{
-numero_carte : nb
-telephone : nb
-date_naissance : date
-login_prêt : text
-mdp_prêt : text
-blacklist : boolean
+  numero_carte : nb
+  telephone : nb
+  date_naissance : date
+  login_prêt : text
+  mdp_prêt : text
+  blacklist : boolean
 }
 
 Class Prêt{
-date_debut : date
-durée : nb
-rendu : boolean
-dépassé () : boolean
+  date_debut : date
+  durée : nb
+  rendu : boolean
+  dépassé () : boolean
 }
 
 Class Sanction{
-
-  'type : {Retard|Deterioration|Perte}
   id : nb
   desc : text
 }
 
 Class Retard{
-nb_jours : nb
+  nb_jours : nb
 }
 
 Class Deterioration{
-remboursement : boolean
+  remboursement : boolean
 }
 
 Class Perte{
-remboursement : boolean
+  remboursement : boolean
 }
-
-Sanction <|-- Retard
-Sanction <|-- Perte
-Sanction <|-- Deterioration
 
 Class Adhésion {
   date_debut : date
   date_fin : date
 }
 
-Adhésion "*" - "1" Adherent : a souscrit
-
-Adherent "1" -- "*" Sanction : a subi
-Adherent "1" -- "5" Prêt : peut faire
-Prêt "*" -- "1" Exemplaire : associé
-Prêt "1" - "0..2" Sanction : est lié à
-Membre_Personnel "1" -- "*" Sanction : donne
-
+Sanction <|-- Retard
+Sanction <|-- Perte
+Sanction <|-- Deterioration
 
 Utilisateur <|-- Membre_Personnel
 Utilisateur <|-- Adherent
@@ -117,13 +103,26 @@ Ressource <|-- Livre
 Ressource <|-- Enregistrement_Musical
 Ressource <|-- Film
 
+Adhésion "*" - "1" Adherent : a souscrit
+Adherent "1" -- "*" Sanction : a subi
+Adherent "1" -- "5" Prêt : peut faire
+
+Prêt "*" -- "1" Exemplaire : associé
+Prêt "1" - "0..2" Sanction : est lié à
+
+Membre_Personnel "1" -- "*" Sanction : donne
+
 Film "*" - "*" Langue : est réalisé en
-Langue "1" - "*" Livre : est écrit en
-Ressource *-- "*" Exemplaire : est composée
-Livre "*" -- "1" Contributeur : Auteur
-Livre "*" -- "1" Contributeur : Editeur
 Film "*" -- "1" Contributeur : Réalisateur
 Film "*" -- "*" Contributeur : Acteur
+
+Langue "1" - "*" Livre : est écrit en
+
+Ressource *-- "*" Exemplaire : est composée
+
+Livre "*" -- "1" Contributeur : Auteur
+Livre "*" -- "1" Contributeur : Editeur
+
 Enregistrement_Musical "*" -- "1" Contributeur : Compositeur
 Enregistrement_Musical "*" -- "1" Contributeur : Interprète
 
