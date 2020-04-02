@@ -118,8 +118,8 @@ CREATE TABLE Exemplaire(
 );
 -- Le CHECK sert à vérifier qu'un exemplaire est forcément lié à une ressource
 CREATE TABLE Realisation(
-  codeFilm NUMERIC UNIQUE NOT NULL,
-  langue VARCHAR UNIQUE NOT NULL,
+  codeFilm NUMERIC NOT NULL,
+  langue VARCHAR NOT NULL,
   FOREIGN KEY (langue) REFERENCES Langue(nom),
   FOREIGN KEY (codeFilm) REFERENCES Film(code),
   PRIMARY KEY (codeFilm,langue)
