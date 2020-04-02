@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS MembrePersonnel CASCADE;
 
 CREATE TABLE  Adherent  (
   numCarte NUMERIC(10) PRIMARY KEY,
-  telephone NUMERIC,
+  telephone NUMERIC UNIQUE,
   dateNaiss DATE,
   loginPret VARCHAR(10) NOT NULL,
   mdpPret VARCHAR NOT NULL,
