@@ -48,7 +48,7 @@ Sanction (
   #id : int,
   description : texte,
   type : {Retard,Deterioration,Perte} ,
-  nb_jours : int,
+  date_fin_sanction : date,
   Remboursement : Boolean,
   Membre =>MembrePersonnel.login NOT NULL,
   Adherent =>Adherent.NumCarte NOT NULL,

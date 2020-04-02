@@ -76,7 +76,7 @@ Class Sanction{
 }
 
 Class Retard{
-  nb_jours : nb
+  date_fin_sanction : date
 }
 
 Class Deterioration{

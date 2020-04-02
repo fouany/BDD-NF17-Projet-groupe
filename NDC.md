@@ -1,32 +1,32 @@
 # Note De Clarification
 
-## Liste des objets présents dans la base et leur propriétés 
+## Liste des objets présents dans la base et leur propriétés
 Dans la base de données, il y a des ressources qui peuvent être des livres, des films ou bien des enregistrements musicaux :
 * Une ressource a un code, un titre, une date d'apparition, un genre et un code de classification
-* Les livres ont un code isbn unique et un résumé 
+* Les livres ont un code isbn unique et un résumé
 * Les films ont une longueur et un synopsis
 * Les enregistrements musicaux ont une certaine longueur
 
 On trouvera aussi les différentes langues des ressources :
-*  Ces  langues ont un nom 
+*  Ces  langues ont un nom
 
-Les contributeurs sont liés aux différentes ressources citées auparavant 
-* les contributeurs ont un nom, un prénom, une date de naissance et une nationalité 
+Les contributeurs sont liés aux différentes ressources citées auparavant
+* les contributeurs ont un nom, un prénom, une date de naissance et une nationalité
 
 La base de données est utilisée par des utilisateurs qui peuvent être des adhérents ou des membres du personnel de la bibliothèque :
 * Les utilisateurs ont un nom, un prénom, une adresse et un mail
 * Les adhérents ont un numéro de carte d'adhérent, un numéro de téléphone, une date de naissance, un login, un mot de passe et peuvent être blacklistés
 * Les membres du personnel ont un login et un mot de passe
 
-Les adhésions actuelles et passées des adhérents sont recensées : 
-* Elles ont une date de début et une date de fin 
+Les adhésions actuelles et passées des adhérents sont recensées :
+* Elles ont une date de début et une date de fin
 
 Dans la base de données, on trouvera aussi les différents exemplaires de chaque ressource appartenant à la bibliothèque :
 * Un exemplaire a un état {neuf, bon, abîmé}, une disponibilité {disponible, prêté, perdu} et un identifiant
 
 Les sanctions des adhérents sont recensées, elles peuvent être liées à des retards, des déteriorations et/ou des pertes :
 * Les sanctions ont un identifiant et une description
-* Les retards sont caractérisés par un nombre de jours de dépassement
+* Les retards sont sanctionnés par une date jusqu'à laquelle l'adhérent ne peut pas faire de prêt
 * Les pertes et les déteriorations ont un booléen spécifiant si l'exemplaire a été remboursé ou non
 
 Dans la base de données, on trouve les différents prêts faits par les adhérents :
@@ -51,7 +51,7 @@ Un prêt peut être lié à aucune, une ou deux sanctions et une sanction n'est 
 Les adhérents à la bibliothèque ont le droit de consulter les exemplaires existants et d'emprunter des livres à condition que l'adhésion soit à jour et qu'il soit authentifié.
 Les membres du personnel peuvent consulter mais aussi modifier et ajouter du contenu, ils peuvent aussi gérer les retours des documents. Ils peuvent sacntionner les adhérents et même les blacklister.
 
-## Hypothèses faites sur le sujet 
+## Hypothèses faites sur le sujet
 On émet les hypothèses suivantes: <br>
 Un livre n'est écrit qu'en une seule langue , les langues ont un nom unique. <br>
 Chaque exemplaire d'une ressource a un identifiant pour distinguer les exemplaires d'une même ressource.<br>
