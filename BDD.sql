@@ -137,8 +137,8 @@ CREATE TABLE Pret (
 );
 
 CREATE TABLE Joue(
-  acteur NUMERIC UNIQUE NOT NULL,
-  codeFilm NUMERIC UNIQUE NOT NULL,
+  acteur NUMERIC NOT NULL,
+  codeFilm NUMERIC NOT NULL,
   FOREIGN KEY (codeFilm) REFERENCES Film(code),
   FOREIGN KEY (acteur) REFERENCES Contributeur(id),
   PRIMARY KEY (codeFilm,acteur)
