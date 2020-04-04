@@ -287,3 +287,22 @@ CREATE VIEW FilmEnregistrementMemeCode(codeFilm) AS
 SELECT Film.code FROM EnregistrementMusical, Film WHERE EnregistrementMusical.code = Film.code GROUP BY Film.code;
 CREATE VIEW EnregistrementLivreMemeCode(codeEnregistrementMusical) AS
 SELECT EnregistrementMusical.code FROM Livre, EnregistrementMusical WHERE EnregistrementMusical.code = Livre.code GROUP BY EnregistrementMusical.code ;
+
+-- Ces 3 vues servent à compter le nombre d'emptunts d'une ressource
+CREATE VIEW nbEmpruntsLivre AS
+SELECT codeLivre, COUNT(*) AS NbEmprunts FROM Exemplaire,Pret
+WHERE Exemplaire.codeLivre IS NOT NULL
+AND Exemplaire.id=Pret.exemplaire
+GROUP BY Exemplaire.codeLivre;
+
+CREATE VIEW nbEmpruntsFilm AS
+SELECT codeFilm, COUNT(*) AS NbEmprunts FROM Exemplaire,Pret
+WHERE Exemplaire.codeFilm IS NOT NULL
+AND Exemplaire.id=Pret.exemplaire
+GROUP BY Exemplaire.codeFilm;
+
+CREATE VIEW nbEmpruntsEnregistrement AS
+SELECT codeEnregistrement, COUNT(*) AS NbEmprunts FROM Exemplaire,Pret
+WHERE Exemplaire.codeEnregistrement IS NOT NULL
+AND Exemplaire.id=Pret.exemplaire
+GROUP BY Exemplaire.codeEnregistrement;
