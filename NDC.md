@@ -47,11 +47,11 @@ Un adhérent peut subir plusieurs sanctions mais une sanction ne peut être subi
 Un membre du personnel peut donner plusieurs sanctions mais une sanction n'est donnée que par un membre.<br>
 Un prêt peut être lié à aucune, une ou deux sanctions et une sanction n'est liée qu'à un seul prêt.<br>
 
-## Liste des utilisateurs qui vont utiliser la base de données et leur rôle
+## Liste des utilisateurs qui vont utiliser la base de données, leur rôle et leurs droits
 - Les adhérents à la bibliothèque ont le droit de consulter les exemplaires existants et d'emprunter des livres à condition que l'adhésion soit à jour et qu'il soit authentifié. 
 - Les membres du personnel peuvent consulter mais aussi modifier et ajouter du contenu, ils peuvent aussi gérer les retours des documents. Ils peuvent sanctionner les adhérents et même les blacklister. Ils auront pour cela accès à des vues pour voir les prêts en retard.
 Ils auront aussi accès à des vues pour les statistiques tels que le nombre d'emprunts par catégorie de ressources. Ils auront une liste d'adhérent qui pourront emprunter (ceux qui remplissent toutes les conditions).
-Pour vérifier la cohérence des données au niveau des ressources, les membres du personnel auront accès à des vues qui montreront la non-cohérence des données notamment au niveau des héritages. 
+Pour vérifier la gestion des données au niveau des ressources, les membres du personnel auront accès à des vues qui montreront la non-cohérence des données notamment au niveau des héritages. 
 
 ## Hypothèses faites sur le sujet
 On émet les hypothèses suivantes: <br>
