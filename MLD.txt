@@ -151,9 +151,9 @@ Exemplaire(
   #id : int,
   etat : {neuf|bon|abime} NOT NULL,
   disponibilite : {pret|disponible|perdu} NOT NULL,
-  #codelivre =>Livre.code,
-  #codeFilm =>Film.code,
-  #codeenregistrementMusical =>enregistrementMusical.code
+  codelivre =>Livre.code,
+  codeFilm =>Film.code,
+  codeenregistrementMusical =>enregistrementMusical.code
 )
 
 C1) jointure (Livre, Film, Film.code = Livre.code) = ensembleVide
