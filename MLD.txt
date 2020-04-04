@@ -1,3 +1,8 @@
+Normalisation : 
+Forme Normale 1NF OK 
+Forme Normale 2NF OK 
+Forme Normale 3NF OK 
+
 Héritage utilisateur par classes filles :
 
 Adherent (
