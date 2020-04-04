@@ -179,7 +179,7 @@ INSERT INTO Adhesion VALUES (6,TO_DATE('20190101','YYYYMMDD'),TO_DATE('20200101'
 INSERT INTO Adhesion VALUES (7,TO_DATE('20170101','YYYYMMDD'),TO_DATE('20180101','YYYYMMDD'),1);
 INSERT INTO Adhesion VALUES (8,TO_DATE('20190101','YYYYMMDD'),TO_DATE('20200101','YYYYMMDD'),4);
 INSERT INTO Adhesion VALUES (9,TO_DATE('20200101','YYYYMMDD'),TO_DATE('2021101','YYYYMMDD'),1);
---INSERT INTO Adhesion VALUES (10,TO_DATE('20200101','YYYYMMDD'),TO_DATE('20210101','YYYYMMDD'),3);
+INSERT INTO Adhesion VALUES (10,TO_DATE('20200101','YYYYMMDD'),TO_DATE('20210101','YYYYMMDD'),3);
 INSERT INTO Adhesion VALUES (11,TO_DATE('20200101','YYYYMMDD'),TO_DATE('20210101','YYYYMMDD'),4);
 
 INSERT INTO Contributeur VALUES (1,'Zola','Emile',TO_DATE('19020929','YYYYMMDD'),'Francais');
@@ -209,6 +209,7 @@ INSERT INTO ENREGISTREMENTMUSICAL(code,titre,dateApparition,codeClassification,l
 
 INSERT INTO Film(code,titre,dateApparition,codeClassification,longueur,synopsis,realisateur) VALUES (5,'JurassicPark',TO_DATE('19930228','YYYYMMDD'),'34226',127,'Un film avec des dinosaures',6);
 INSERT INTO Film(code,titre,dateApparition,codeClassification,longueur,synopsis,realisateur) VALUES (6,'Laguerredesmondes',TO_DATE('20050228','YYYYMMDD'),'34227',118,'Un film avec des mondes',6);
+INSERT INTO Film(code,titre,dateApparition,codeClassification,longueur,synopsis,realisateur) VALUES (1,'Laguerredesmondes',TO_DATE('20050228','YYYYMMDD'),'34228',126,'Un film avec des mondes',6);
 
 INSERT INTO Exemplaire(id,etat,disponibilite,codeLivre) VALUES (1,'neuf','disponible',1);
 INSERT INTO Exemplaire(id,etat,disponibilite,codeLivre) VALUES (2,'bon','disponible',1);
@@ -250,7 +251,7 @@ INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) 
 INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (2,'"Hopela Un retard pour toi de la part de PassePartout"','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,1);
 INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (3,'"Hopela Un retard pour toi de la part de PassePartout','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,1);
 
----------------------------------
+--Vue pour vérifier que les adhérents peuvent emprunter
 CREATE VIEW Nb_Pret (numCarte, nb)
 AS
 SELECT Adherent.numCarte, COUNT(*) AS Nb_Pret FROM Adherent, Pret
@@ -272,6 +273,17 @@ GROUP BY a.numCarte;
 -- Vue pour vérifier qu'il y a au plus deux sanctions par prêt :
 CREATE VIEW nbSanctionsTropEleve(idPret,Nombre) AS
 SELECT p.id,count(s.id) AS Nombre FROM Pret p LEFT JOIN Sanction s ON p.id = s.Pret GROUP BY p.id HAVING count(s.id) > 2;
+
+
 -- créer une vue pour vérifier que les adhérents qui subissent des sanctions sont bien ceux qui le méritent dans Sanction -> pret . adherent  = Sanction -> Adherent
 CREATE VIEW adherentSanctionAucuneRaison(idAdherent)AS
 SELECT Sanction.adherent FROM Pret,Sanction WHERE Sanction.pret = Pret.id AND Sanction.adherent <> Pret.adherent GROUP BY Sanction.adherent;
+
+
+-- C1, C2 ET C3 sont trois vues qui doivent être vides
+CREATE VIEW LivreFilmMemeCode(codeLivre) AS
+SELECT Livre.code FROM Livre, Film WHERE Livre.code = Film.code GROUP BY Livre.code;
+CREATE VIEW FilmEnregistrementMemeCode(codeFilm) AS
+SELECT Film.code FROM EnregistrementMusical, Film WHERE EnregistrementMusical.code = Film.code GROUP BY Film.code;
+CREATE VIEW EnregistrementLivreMemeCode(codeEnregistrementMusical) AS
+SELECT EnregistrementMusical.code FROM Livre, EnregistrementMusical WHERE EnregistrementMusical.code = Livre.code GROUP BY EnregistrementMusical.code ;
