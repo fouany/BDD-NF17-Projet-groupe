@@ -179,7 +179,7 @@ INSERT INTO Adhesion VALUES (6,TO_DATE('20190101','YYYYMMDD'),TO_DATE('20200101'
 INSERT INTO Adhesion VALUES (7,TO_DATE('20170101','YYYYMMDD'),TO_DATE('20180101','YYYYMMDD'),1);
 INSERT INTO Adhesion VALUES (8,TO_DATE('20190101','YYYYMMDD'),TO_DATE('20200101','YYYYMMDD'),4);
 INSERT INTO Adhesion VALUES (9,TO_DATE('20200101','YYYYMMDD'),TO_DATE('2021101','YYYYMMDD'),1);
-INSERT INTO Adhesion VALUES (10,TO_DATE('20200101','YYYYMMDD'),TO_DATE('20210101','YYYYMMDD'),3);
+--INSERT INTO Adhesion VALUES (10,TO_DATE('20200101','YYYYMMDD'),TO_DATE('20210101','YYYYMMDD'),3);
 INSERT INTO Adhesion VALUES (11,TO_DATE('20200101','YYYYMMDD'),TO_DATE('20210101','YYYYMMDD'),4);
 
 INSERT INTO Contributeur VALUES (1,'Zola','Emile',TO_DATE('19020929','YYYYMMDD'),'Francais');
@@ -245,6 +245,11 @@ INSERT INTO Pret VALUES (7,TO_DATE('20190101','YYYYMMDD'),25,FALSE,2,2);
 INSERT INTO Pret VALUES (8,TO_DATE('20200401','YYYYMMDD'),25,FALSE,8,2);
 INSERT INTO Pret VALUES (9,TO_DATE('20200320','YYYYMMDD'),25,FALSE,9,4);
 INSERT INTO Pret VALUES (10,TO_DATE('20200320','YYYYMMDD'),25,FALSE,6,4);
+
+INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (1,'Hopela Un retard pour toi de la part de PassePartout','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,1);
+INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (2,'"Hopela Un retard pour toi de la part de PassePartout"','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,1);
+INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (3,'"Hopela Un retard pour toi de la part de PassePartout','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,1);
+
 ---------------------------------
 CREATE VIEW Nb_Pret (numCarte, nb)
 AS
@@ -254,13 +259,19 @@ AND Pret.rendu=false
 GROUP BY Adherent.numCarte;
 
 CREATE VIEW adhe_ok (numcarte) AS
-SELECT a.numcarte FROM adherent a, adhesion ad, pret p, sanction s, Nb_pret n
-WHERE a.numCarte=s.adherent
-AND a.numCarte=ad.adherent
-AND a.numCarte=p.adherent
-AND a.numCarte=n.numCarte
-AND a.blacklist=false
-AND s.remboursement=true
+SELECT a.numcarte FROM  (((adherent a LEFT JOIN sanction s ON a.numCarte=s.adherent)
+LEFT JOIN pret p ON a.numCarte=p.adherent) JOIN adhesion ad ON a.numCarte=ad.adherent)LEFT JOIN  Nb_pret n ON  a.numCarte=n.numCarte
+WHERE a.blacklist=false
+AND (s.remboursement IS NULL OR s.remboursement=true )
 AND (s.datefinsanction IS NULL OR s.datefinsanction<current_date)
 AND ad.datefin>current_date
-AND n.nb<5 GROUP BY a.numCarte;
+AND (n.nb IS NULL OR n.nb<5)
+GROUP BY a.numCarte;
+
+
+-- Vue pour vérifier qu'il y a au plus deux sanctions par prêt :
+CREATE VIEW nbSanctionsTropEleve(idPret,Nombre) AS
+SELECT p.id,count(s.id) AS Nombre FROM Pret p LEFT JOIN Sanction s ON p.id = s.Pret GROUP BY p.id HAVING count(s.id) > 2;
+-- créer une vue pour vérifier que les adhérents qui subissent des sanctions sont bien ceux qui le méritent dans Sanction -> pret . adherent  = Sanction -> Adherent
+CREATE VIEW adherentSanctionAucuneRaison(idAdherent)AS
+SELECT Sanction.adherent FROM Pret,Sanction WHERE Sanction.pret = Pret.id AND Sanction.adherent <> Pret.adherent GROUP BY Sanction.adherent;
