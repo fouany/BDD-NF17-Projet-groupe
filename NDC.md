@@ -51,7 +51,7 @@ Un prêt peut être lié à aucune, une ou deux sanctions et une sanction n'est 
 Les adhérents à la bibliothèque ont le droit de consulter les exemplaires existants et d'emprunter des livres à condition que l'adhésion soit à jour et qu'il soit authentifié.
 Les membres du personnel peuvent consulter mais aussi modifier et ajouter du contenu, ils peuvent aussi gérer les retours des documents. Ils peuvent sanctionner les adhérents et même les blacklister. Ils auront pour cela accès à des vues pour voir les prêts en retard.
 Ils auront aussi accès à des vues pour les statistiques tels que le nombre d'emprunts par catégorie de ressources. Ils auront une liste d'adhérent qui pourront emprunter (ceux qui remplissent toutes les conditions).
-
+Pour vérifier la cohérence des données au niveau des ressources, les membres du personnel auront accès à des vues qui montreront la non-cohérence des données notamment au niveau des héritages. 
 
 ## Hypothèses faites sur le sujet
 On émet les hypothèses suivantes: <br>
@@ -61,5 +61,5 @@ Chaque exemplaire est nécessairement liée à une ressource. Un exemplaire n'ex
 Il y a au plus un auteur par livre et au plus un interprète par enregistrements musicaux.<br>
 Les login et mdp des adhérents et des membres du personnel sont différents et permettent d'accéder à deux interfaces différentes.<br>
 Un adhérent ne pourra souscrire qu'à une nouvelle adhésion que si la sienne en'est plus valide.<br>
-Un adhérent pourra faire plus de 5 emprunts dans sa vie à condition qu'il rende les exemplaires empruntés et qu'il en ait 5 au maximum au même moment.<br>
+Un adhérent pourra faire plus de 5 emprunts dans sa vie à condition qu'il rend   les exemplaires empruntés et qu'il en ait 5 au maximum au même moment.<br>
 Un adhérent pourra faire un emprunt uniquement si son adhésion est à jour, s'il est authentifié et s'il n'est pas blacklisté.<br>
