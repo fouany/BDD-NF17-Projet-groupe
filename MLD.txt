@@ -118,8 +118,8 @@ Livre(
   #code : int,
   titre : text NOT NULL,
   date_apparition : date,
-  editeur : text NOT NULL,
-  genre : text,
+  editeur : text ,
+  genre : text NOT NULL,
   code_classification : text UNIQUE NOT NULL
   code_isbn : int UNIQUE NOT NULL,
   resume : text NOT NULL,
@@ -132,8 +132,8 @@ enregistrementMusical(
   #code : int,
   titre : text NOT NULL,
   date_apparition : date,
-  editeur : text NOT NULL,
-  genre : text,
+  editeur : text ,
+  genre : text NOT NULL,
   code_classification : text UNIQUE NOT NULL
   longueur : int,
   Compositeur => contributeur.id NOT NULL,
@@ -144,8 +144,8 @@ Film(
   #code : int,
   titre : text NOT NULL,
   date_apparition : date,
-  editeur : text NOT NULL,
-  genre : text,
+  editeur : text,
+  genre : text NOT NULL,
   code_classification : text UNIQUE NOT NULL
   longueur : int,
   synopsis : text
