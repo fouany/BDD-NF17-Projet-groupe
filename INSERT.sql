@@ -83,5 +83,8 @@ INSERT INTO Pret VALUES (8,TO_DATE('20200401','YYYYMMDD'),25,FALSE,8,2);
 INSERT INTO Pret VALUES (9,TO_DATE('20200320','YYYYMMDD'),25,FALSE,9,4);
 INSERT INTO Pret VALUES (10,TO_DATE('20200320','YYYYMMDD'),25,FALSE,6,4);
 
-INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (1,'Hopela Un retard pour toi de la part de PassePartout','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,1);
+INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (1,'Hopela Un retard pour toi de la part de PassePartout','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,2);
 INSERT INTO Sanction (id,description,type,datefinsanction,membre,adherent,pret) VALUES (2,'"Hopela Un retard pour toi de la part de PassePartout"','Retard',TO_DATE('20200405','YYYYMMDD'),'PassePar',1,2);
+
+-- Pour la vue vnbSanctionsTropEleve
+INSERT INTO Sanction (id,description,type,remboursement,membre,adherent,pret) VALUES (3,'"Hopela Une deterioration pour toi de la part de PassePartout"','Deterioration','TRUE', 'PassePar',1,2);
