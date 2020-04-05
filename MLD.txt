@@ -1,7 +1,14 @@
 Normalisation : 
-Forme Normale 1NF OK 
-Forme Normale 2NF OK 
-Forme Normale 3NF OK 
+Forme Normale 1NF :
+Ici tout les attributs sont atomiques, donc on est en 1NF.
+
+Forme Normale 2NF :
+Toutes les clés sont atomiques sauf dans la table joue et réalisation mais dans celle-ci, il n'y a pas d'autres attributs. Donc on est en 2NF.
+
+Forme Normale 3NF :
+Nous ne sommes pas en 3NF. Il faudrait notamment que dans les ressources, les couples (titres,genre,auteur/réalisateur/interprete) ne forment pas des clés, c'est supposable mais pas forcément vrai.
+Ces couples déterminent souvent le reste des attributs. Un problème se pose aussi niveau des adhérents qui ont le login qui déterminent tout le reste, il faudrait faire une autre table login pour les adhérents. 
+
 
 Héritage utilisateur par classes filles :
 
