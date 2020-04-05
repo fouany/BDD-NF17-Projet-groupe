@@ -6,9 +6,7 @@ Forme Normale 2NF :
 Toutes les clés sont atomiques sauf dans la table joue et réalisation mais dans celle-ci, il n'y a pas d'autres attributs. Donc on est en 2NF.
 
 Forme Normale 3NF :
-Nous ne sommes pas en 3NF. Il faudrait notamment que dans les ressources, les couples (titres,genre,auteur/réalisateur/interprete) ne forment pas des clés, c'est supposable mais pas forcément vrai.
-Ces couples déterminent souvent le reste des attributs. Un problème se pose aussi niveau des adhérents qui ont le login qui déterminent tout le reste, il faudrait faire une autre table login pour les adhérents. 
-
+D'après les tables, on peut voir qu'aucun attribut non clé détermine un autre attribut non clé. La plupart des attributs non clé sont déterminés par la clé primaire ou alors par une clé candidate de la table en question.
 
 Héritage utilisateur par classes filles :
 
