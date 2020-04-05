@@ -128,7 +128,6 @@ Livre(
   editeur : text ,
   genre : text NOT NULL,
   code_classification : text UNIQUE NOT NULL
-  code_isbn : int UNIQUE NOT NULL,
   resume : text NOT NULL,
   langue => Langue.nom NOT NULL,
   auteur = contributeur.id NOT NULL,
